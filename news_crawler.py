@@ -18,7 +18,7 @@ for i in range(1, page_count):    #奈良新聞のホームページのカウン
     titles = soup.find_all(class_ = "item", limit = 10)    #1ページのニュースが10個しかないので、10個とります
     for title in titles:
         text.append(title.select_one("h3").getText())    #ニュースのタイトルをとる
-        text.append(title.select_one("a").get("href"))   　#ニュースのリンクをとる
+        text.append("https://www.nara-np.co.jp/news/" + title.select_one("a").get("href"))   　#ニュースのリンクをとる
         text_count += 1
         print("奈良新聞の" + str(text_count) + "番目のニュース取れまhした")
         if text_count >= max_text:    #50個新聞とったらループを抜ける
